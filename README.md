@@ -52,7 +52,7 @@ analysis.wordOccurrences(caseSensitive: false).sorted(by: .key, order: .ascendin
 
 Want to contribute to this project? Great! There's some things that still need work, but definitely also let me know when you encounter any issues, spot a bug, or have a feature request!
 
-Check out the issues for some tasks to get started with.
+Check out the issues for some tasks to get started with. Or, write tests. We can use as many as you can think of.
 
 ## License
 
