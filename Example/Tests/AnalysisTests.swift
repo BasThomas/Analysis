@@ -1,5 +1,5 @@
 //
-//  AppDelegate.swift
+//  AnalysisTests.swift
 //  Analysis
 //
 //  Created by Bas Broek on 11/11/2016.
@@ -10,7 +10,7 @@ import UIKit
 import XCTest
 @testable import Analysis
 
-class Tests: XCTestCase {
+class AnalysisTests: XCTestCase {
   
   let helloWorld1 = Analysis(of: "Hello, world!")
   let helloWorld2 = "Hello, world!".analysed()
@@ -29,6 +29,8 @@ class Tests: XCTestCase {
   }
   
   func testEquality() {
+    let analysis = Analysis(of: "You are awesome, you!")
+    print(analysis.wordOccurrences(caseSensitive: false).sorted(by: .key, ascending: true))
     XCTAssertEqual(helloWorld1, helloWorld2)
     XCTAssertEqual(helloWorld2, helloWorld1)
     
