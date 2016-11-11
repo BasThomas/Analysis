@@ -18,6 +18,7 @@ class Tests: XCTestCase {
   let a = "a".analysed()
   let z = "z".analysed()
   let repeating = "repeat, repeat, repeat".analysed()
+  let differentSentenceLengths = "Hi. How are you? I am good".analysed()
   
   override func setUp() {
     super.setUp()
@@ -98,22 +99,61 @@ class Tests: XCTestCase {
   }
   
   func testWordFrequency() {
+    XCTAssertEqualWithAccuracy(three.frequency(of: "hello"), 33.3, accuracy: 0.1)
+    XCTAssertEqualWithAccuracy(three.frequency(of: "HELLO"), 33.3, accuracy: 0.1)
     
+    XCTAssertEqual(three.frequency(of: "he"), 0.0)
+    XCTAssertEqual(helloWorld1.frequency(of: "hello"), 50.0)
+    XCTAssertEqual(repeating.frequency(of: "repeat"), 100.0)
+    XCTAssertEqual(repeating.frequency(of: "Repeat"), 100.0)
+    
+    XCTAssertEqualWithAccuracy(three.frequency(of: "Hello", caseSensitive: true), 33.3, accuracy: 0.1)
+    
+    XCTAssertEqual(three.frequency(of: "hello", caseSensitive: true), 0.0)
+    XCTAssertEqual(three.frequency(of: "he", caseSensitive: true), 0.0)
+    XCTAssertEqual(three.frequency(of: "HELLO", caseSensitive: true), 0.0)
+    XCTAssertEqual(helloWorld1.frequency(of: "hello", caseSensitive: true), 0.0)
+    XCTAssertEqual(repeating.frequency(of: "repeat", caseSensitive: true), 100.0)
+    XCTAssertEqual(repeating.frequency(of: "Repeat", caseSensitive: true), 0.0)
   }
   
   func testCharacterFrequency() {
+    XCTAssertEqualWithAccuracy(three.frequency(of: Character("h")), 16.6, accuracy: 0.1)
+    XCTAssertEqualWithAccuracy(three.frequency(of: Character("H")), 16.6, accuracy: 0.1)
+    XCTAssertEqualWithAccuracy(three.frequency(of: Character("i")), 5.5, accuracy: 0.1)
+    XCTAssertEqualWithAccuracy(helloWorld1.frequency(of: Character("h")), 7.7, accuracy: 0.1)
+    XCTAssertEqualWithAccuracy(repeating.frequency(of: Character("e")), 27.3, accuracy: 0.1)
+    XCTAssertEqualWithAccuracy(repeating.frequency(of: Character("E")), 27.3, accuracy: 0.1)
     
+    XCTAssertEqualWithAccuracy(three.frequency(of: Character("H"), caseSensitive: true), 16.6, accuracy: 0.1)
+    XCTAssertEqualWithAccuracy(three.frequency(of: Character("i"), caseSensitive: true), 5.5, accuracy: 0.1)
+    XCTAssertEqualWithAccuracy(helloWorld1.frequency(of: Character("e"), caseSensitive: true), 7.7, accuracy: 0.1)
+    XCTAssertEqualWithAccuracy(repeating.frequency(of: Character("e"), caseSensitive: true), 27.3, accuracy: 0.1)
+    
+    XCTAssertEqual(three.frequency(of: Character("h"), caseSensitive: true), 0.0)
+    XCTAssertEqual(three.frequency(of: Character("h"), caseSensitive: true), 0.0)
+    XCTAssertEqual(repeating.frequency(of: Character("T"), caseSensitive: true), 0.0)
   }
   
   func testAverageWordLength() {
+    XCTAssertEqualWithAccuracy(three.averageLength(per: .word), 4.3, accuracy: 0.1)
     
+    XCTAssertEqual(helloWorld1.averageLength(per: .word), 5.0)
+    XCTAssertEqual(repeating.averageLength(per: .word), 6.0)
   }
   
   func testAverageSentenceLength() {
+    XCTAssertEqualWithAccuracy(three.averageLength(per: .sentence), 5.3, accuracy: 0.1)
     
+    XCTAssertEqual(helloWorld1.averageLength(per: .sentence), 13.0)
+    XCTAssertEqual(repeating.averageLength(per: .sentence), 22.0)
   }
   
   func testAverageWordsPerSentence() {
+    XCTAssertEqualWithAccuracy(differentSentenceLengths.averageWordsPerSentence, 2.3, accuracy: 0.1)
     
+    XCTAssertEqual(three.averageWordsPerSentence, 1.0)
+    XCTAssertEqual(helloWorld1.averageWordsPerSentence, 2.0)
+    XCTAssertEqual(repeating.averageWordsPerSentence, 3.0)
   }
 }

@@ -96,8 +96,8 @@ struct Analysis {
       .filter { $0 == character }.count
   }
   
-  func frequency(of word: String) -> Percentage {
-    return Double(occurrences(of: word)) / Double(wordCount()) * 100.0
+  func frequency(of word: String, caseSensitive: Bool = false) -> Percentage {
+    return Double(occurrences(of: word, caseSensitive: caseSensitive)) / Double(wordCount()) * 100.0
   }
   
   func frequency(of character: Character, caseSensitive: Bool = false, includingSpaces: Bool = true) -> Percentage {
@@ -105,12 +105,15 @@ struct Analysis {
   }
   
   func averageLength(per option: LengthOption) -> Characters {
-    let characterCount = self.characterCount(includingSpaces: false)
     switch option {
     case .word:
-      return Double(characterCount) / Double(wordCount())
+      return Double(words.reduce("", +).characters.count) / Double(wordCount())
     case .sentence:
-      return Double(characterCount) / Double(sentenceCount())
+      if sentences.count > 1 {
+        return Double(sentences.reduce("", +).characters.count) / Double(sentenceCount())
+      } else {
+        return Double(characterCount(includingSpaces: true)) / Double(sentenceCount())
+      }
     }
   }
   
