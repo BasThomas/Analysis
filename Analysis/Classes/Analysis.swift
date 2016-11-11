@@ -64,7 +64,7 @@ struct Analysis {
     var occurrences: [String: Int] = [:]
     words
       .map { (caseSensitive) ? $0 : $0.lowercased() }
-      .map { occurrences[$0] = (occurrences[$0] ?? 0) + 1 }
+      .forEach { occurrences[$0] = (occurrences[$0] ?? 0) + 1 }
     return occurrences
   }
   
@@ -72,7 +72,7 @@ struct Analysis {
     var occurrences: [Character: Int] = [:]
     characters
       .map { (caseSensitive) ? $0 : Character(String(describing: $0).lowercased()) }
-      .map { occurrences[$0] = (occurrences[$0] ?? 0) + 1 }
+      .forEach { occurrences[$0] = (occurrences[$0] ?? 0) + 1 }
     return occurrences
   }
   
