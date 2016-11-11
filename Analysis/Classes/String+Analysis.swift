@@ -10,6 +10,7 @@ import Foundation
 
 public extension String {
   
+  /// Returns an alysis of `self`.
   public func analysed() -> Analysis {
     return Analysis(of: self)
   }

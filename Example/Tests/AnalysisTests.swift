@@ -29,8 +29,6 @@ class AnalysisTests: XCTestCase {
   }
   
   func testEquality() {
-    let analysis = Analysis(of: "You are awesome, you!")
-    print(analysis.wordOccurrences(caseSensitive: false).sorted(by: .key, ascending: true))
     XCTAssertEqual(helloWorld1, helloWorld2)
     XCTAssertEqual(helloWorld2, helloWorld1)
     
@@ -137,18 +135,18 @@ class AnalysisTests: XCTestCase {
     XCTAssertEqual(repeating.frequency(of: Character("T"), caseSensitive: true), 0.0)
   }
   
-  func testAverageWordLength() {
-    XCTAssertEqualWithAccuracy(three.averageLength(per: .word), 4.3, accuracy: 0.1)
+  func testAverageCharactersPerWord() {
+    XCTAssertEqualWithAccuracy(three.averageCharacters(per: .word), 4.3, accuracy: 0.1)
     
-    XCTAssertEqual(helloWorld1.averageLength(per: .word), 5.0)
-    XCTAssertEqual(repeating.averageLength(per: .word), 6.0)
+    XCTAssertEqual(helloWorld1.averageCharacters(per: .word), 5.0)
+    XCTAssertEqual(repeating.averageCharacters(per: .word), 6.0)
   }
   
-  func testAverageSentenceLength() {
-    XCTAssertEqualWithAccuracy(three.averageLength(per: .sentence), 5.3, accuracy: 0.1)
+  func testAverageCharactersPerSentence() {
+    XCTAssertEqualWithAccuracy(three.averageCharacters(per: .sentence), 5.3, accuracy: 0.1)
     
-    XCTAssertEqual(helloWorld1.averageLength(per: .sentence), 13.0)
-    XCTAssertEqual(repeating.averageLength(per: .sentence), 22.0)
+    XCTAssertEqual(helloWorld1.averageCharacters(per: .sentence), 13.0)
+    XCTAssertEqual(repeating.averageCharacters(per: .sentence), 22.0)
   }
   
   func testAverageWordsPerSentence() {
