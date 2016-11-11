@@ -36,10 +36,6 @@ struct Analysis {
     characters = Array(input.characters)
   }
   
-  static func of(_ string: String) -> Analysis {
-    return Analysis(of: string)
-  }
-  
   func sentenceCount() -> Int {
     return sentences.count
   }
