@@ -1,6 +1,14 @@
+//
+//  AppDelegate.swift
+//  Analysis
+//
+//  Created by Bas Broek on 11/11/2016.
+//  Copyright (c) 2016 Bas Broek. All rights reserved.
+//
+
 import UIKit
 import XCTest
-import Analysis
+@testable import Analysis
 
 class Tests: XCTestCase {
   
@@ -28,13 +36,13 @@ class Tests: XCTestCase {
   }
   
   func testComparability() {
-    XCTAssertLessThan(a < z)
-    XCTAssertLessThanOrEqual(a < a)
-    XCTAssertLessThanOrEqual(z < z)
+    XCTAssertLessThan(a, z)
+    XCTAssertLessThanOrEqual(a, a)
+    XCTAssertLessThanOrEqual(z, z)
     
-    XCTAssertGreaterThan(z > a)
-    XCTAssertGreaterThanOrEqual(z > z)
-    XCTAssertGreaterThanOrEqual(a > a)
+    XCTAssertGreaterThan(z, a)
+    XCTAssertGreaterThanOrEqual(z, z)
+    XCTAssertGreaterThanOrEqual(a, a)
   }
   
   func testSentenceCount() {
@@ -63,11 +71,30 @@ class Tests: XCTestCase {
   }
   
   func testWordOccurences() {
+    print(helloWorld1.words)
+    XCTAssertEqual(helloWorld1.occurrences(of: "hello"), 1)
+    XCTAssertEqual(helloWorld1.occurrences(of: "HELLO"), 1)
+    XCTAssertEqual(helloWorld1.occurrences(of: "invalid"), 0)
+    XCTAssertEqual(repeating.occurrences(of: "repeat"), 3)
+    XCTAssertEqual(repeating.occurrences(of: "re"), 0)
     
+    XCTAssertEqual(helloWorld1.occurrences(of: "Hello", caseSensitive: true), 1)
+    XCTAssertEqual(helloWorld1.occurrences(of: "HELLO", caseSensitive: true), 0)
+    XCTAssertEqual(helloWorld1.occurrences(of: "invalid", caseSensitive: true), 0)
+    XCTAssertEqual(repeating.occurrences(of: "repeat", caseSensitive: true), 3)
+    XCTAssertEqual(repeating.occurrences(of: "re", caseSensitive: true), 0)
   }
   
   func testCharacterOccurrences() {
+    XCTAssertEqual(helloWorld1.occurrences(of: Character("h")), 1)
+    XCTAssertEqual(helloWorld1.occurrences(of: Character("H")), 1)
+    XCTAssertEqual(repeating.occurrences(of: Character("a")), 3)
+    XCTAssertEqual(repeating.occurrences(of: Character("R")), 3)
     
+    XCTAssertEqual(helloWorld1.occurrences(of: Character("h"), caseSensitive: true), 0)
+    XCTAssertEqual(helloWorld1.occurrences(of: Character("H"), caseSensitive: true), 1)
+    XCTAssertEqual(repeating.occurrences(of: Character("I"), caseSensitive: true), 0)
+    XCTAssertEqual(repeating.occurrences(of: Character("r"), caseSensitive: true), 3)
   }
   
   func testWordFrequency() {

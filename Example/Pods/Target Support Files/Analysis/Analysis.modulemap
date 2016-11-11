@@ -1,0 +1,6 @@
+framework module Analysis {
+  umbrella header "Analysis-umbrella.h"
+
+  export *
+  module * { export * }
+}

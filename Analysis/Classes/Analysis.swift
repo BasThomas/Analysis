@@ -46,7 +46,7 @@ struct Analysis {
   
   func wordCount(unique: Bool = false) -> Int {
     if unique {
-      return _wordOccurrences.keys.count
+      return _wordOccurrences().keys.count
     } else {
       return words.count
     }
@@ -60,34 +60,40 @@ struct Analysis {
     }
   }
   
-  private var _wordOccurrences: [String: Int] {
+  private func _wordOccurrences(caseSensitive: Bool = false) -> [String: Int] {
     var occurrences: [String: Int] = [:]
-    words.map { occurrences[$0] = (occurrences[$0] ?? 0) + 1 }
+    words
+      .map { (caseSensitive) ? $0 : $0.lowercased() }
+      .map { occurrences[$0] = (occurrences[$0] ?? 0) + 1 }
     return occurrences
   }
   
-  private var _characterOccurences: [Character: Int] {
+  private func _characterOccurences(caseSensitive: Bool = false) -> [Character: Int] {
     var occurrences: [Character: Int] = [:]
-    characters.map { occurrences[$0] = (occurrences[$0] ?? 0) + 1 }
+    characters
+      .map { (caseSensitive) ? $0 : Character(String(describing: $0).lowercased()) }
+      .map { occurrences[$0] = (occurrences[$0] ?? 0) + 1 }
     return occurrences
   }
   
-  func wordOccurrences() -> [String: Int] {
-    return _wordOccurrences
+  func wordOccurrences(caseSensitive: Bool = false) -> [String: Int] {
+    return _wordOccurrences(caseSensitive: caseSensitive)
   }
   
-  func characterOccurences() -> [Character: Int] {
-    return _characterOccurences
+  func characterOccurences(caseSensitive: Bool = false) -> [Character: Int] {
+    return _characterOccurences(caseSensitive: caseSensitive)
   }
   
   func occurrences(of word: String, caseSensitive: Bool = false) -> Int {
     let word = (caseSensitive) ? word : word.lowercased()
-    return _wordOccurrences[word] ?? 0
+    return _wordOccurrences(caseSensitive: caseSensitive)[word] ?? 0
   }
   
   func occurrences(of character: Character, caseSensitive: Bool = false) -> Int {
     let character = (caseSensitive) ? character : Character(String(describing: character).lowercased())
-    return characters.filter { $0 == character }.count
+    return characters
+      .map { (caseSensitive) ? $0 : Character(String(describing: $0).lowercased()) }
+      .filter { $0 == character }.count
   }
   
   func frequency(of word: String) -> Percentage {
