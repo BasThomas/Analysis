@@ -12,6 +12,10 @@ pod 'Analysis', '~> 0.1.0'
 
 Then run `pod install`.
 
+## Sample Project
+
+There's a sample project in the `Example` directory. To use it, run `pod install` to download the required libraries.
+
 ## Usage
 
 Analysing a string is very straightforward. You can use any of the two ways to instantiate an `Analysis`:
