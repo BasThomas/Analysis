@@ -8,14 +8,14 @@
 
 import Foundation
 
-enum SortOption {
+public enum SortOption {
   case key
   case value
 }
 
 extension Dictionary where Key: Comparable, Value: Comparable {
   
-  func sorted(by option: SortOption, ascending: Bool = true) -> [(key: Key, value: Value)] {
+  public func sorted(by option: SortOption, ascending: Bool = true) -> [(key: Key, value: Value)] {
     switch option {
     case .key:
       if ascending {

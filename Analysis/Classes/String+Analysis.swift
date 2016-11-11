@@ -8,13 +8,13 @@
 
 import Foundation
 
-extension String {
+public extension String {
   
-  func analysed() -> Analysis {
+  public func analysed() -> Analysis {
     return Analysis(of: self)
   }
   
-  var lines: [String] {
+  internal var lines: [String] {
     var lines: [String] = []
     self.enumerateLines { line, _ in
       lines.append(line)

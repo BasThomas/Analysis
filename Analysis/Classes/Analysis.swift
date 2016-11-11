@@ -8,21 +8,21 @@
 
 import Foundation
 
-enum LengthOption {
+public enum LengthOption {
   case word
   case sentence
 }
 
-struct Analysis {
-  typealias Percentage = Double
-  typealias Characters = Double
+public struct Analysis {
+  public typealias Percentage = Double
+  public typealias Characters = Double
   
-  let input: String
-  let sentences: [String]
-  let words: [String]
-  let characters: [Character]
+  public let input: String
+  public let sentences: [String]
+  public let words: [String]
+  public let characters: [Character]
   
-  init(of string: String) {
+  public init(of string: String) {
     input = string
     sentences = input
       .replacingOccurrences(of: "! ", with: "!\n")
@@ -36,11 +36,11 @@ struct Analysis {
     characters = Array(input.characters)
   }
   
-  func sentenceCount() -> Int {
+  public func sentenceCount() -> Int {
     return sentences.count
   }
   
-  func wordCount(unique: Bool = false) -> Int {
+  public func wordCount(unique: Bool = false) -> Int {
     if unique {
       return _wordOccurrences().keys.count
     } else {
@@ -48,7 +48,7 @@ struct Analysis {
     }
   }
   
-  func characterCount(includingSpaces: Bool = true) -> Int {
+  public func characterCount(includingSpaces: Bool = true) -> Int {
     if includingSpaces {
       return characters.count
     } else {
@@ -72,35 +72,35 @@ struct Analysis {
     return occurrences
   }
   
-  func wordOccurrences(caseSensitive: Bool = false) -> [String: Int] {
+  public func wordOccurrences(caseSensitive: Bool = false) -> [String: Int] {
     return _wordOccurrences(caseSensitive: caseSensitive)
   }
   
-  func characterOccurences(caseSensitive: Bool = false) -> [Character: Int] {
+  public func characterOccurences(caseSensitive: Bool = false) -> [Character: Int] {
     return _characterOccurences(caseSensitive: caseSensitive)
   }
   
-  func occurrences(of word: String, caseSensitive: Bool = false) -> Int {
+  public func occurrences(of word: String, caseSensitive: Bool = false) -> Int {
     let word = (caseSensitive) ? word : word.lowercased()
     return _wordOccurrences(caseSensitive: caseSensitive)[word] ?? 0
   }
   
-  func occurrences(of character: Character, caseSensitive: Bool = false) -> Int {
+  public func occurrences(of character: Character, caseSensitive: Bool = false) -> Int {
     let character = (caseSensitive) ? character : Character(String(describing: character).lowercased())
     return characters
       .map { (caseSensitive) ? $0 : Character(String(describing: $0).lowercased()) }
       .filter { $0 == character }.count
   }
   
-  func frequency(of word: String, caseSensitive: Bool = false) -> Percentage {
+  public func frequency(of word: String, caseSensitive: Bool = false) -> Percentage {
     return Double(occurrences(of: word, caseSensitive: caseSensitive)) / Double(wordCount()) * 100.0
   }
   
-  func frequency(of character: Character, caseSensitive: Bool = false, includingSpaces: Bool = true) -> Percentage {
+  public func frequency(of character: Character, caseSensitive: Bool = false, includingSpaces: Bool = true) -> Percentage {
     return Double(occurrences(of: character, caseSensitive: caseSensitive)) / Double(characterCount(includingSpaces: includingSpaces)) * 100.0
   }
   
-  func averageLength(per option: LengthOption) -> Characters {
+  public func averageLength(per option: LengthOption) -> Characters {
     switch option {
     case .word:
       return Double(words.reduce("", +).characters.count) / Double(wordCount())
@@ -113,36 +113,36 @@ struct Analysis {
     }
   }
   
-  var averageWordsPerSentence: Double {
+  public var averageWordsPerSentence: Double {
     return Double(wordCount()) / Double(sentenceCount())
   }
 }
 
 extension Analysis: Hashable {
   
-  var hashValue: Int {
+  public var hashValue: Int {
     return input.hashValue
   }
   
-  static func ==(lhs: Analysis, rhs: Analysis) -> Bool {
+  public static func ==(lhs: Analysis, rhs: Analysis) -> Bool {
     return lhs.input == rhs.input
   }
 }
 
 extension Analysis: Comparable {
   
-  static func <(lhs: Analysis, rhs: Analysis) -> Bool {
+  public static func <(lhs: Analysis, rhs: Analysis) -> Bool {
     return lhs.input < rhs.input
   }
 }
 
 extension Analysis: CustomStringConvertible, CustomDebugStringConvertible {
   
-  var description: String {
+  public var description: String {
     return "Analysis(\"\(input)\")"
   }
   
-  var debugDescription: String {
+  public var debugDescription: String {
     return description
   }
 }
