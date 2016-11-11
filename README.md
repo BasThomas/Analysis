@@ -39,13 +39,13 @@ analysis.characterCount(includingSpaces: false) // 18
 analysis.wordOccurrences(caseSensitive: true) // ["You": 1, "are": 1, "awesome", 1, "you": 1]
 analysis.wordOccurrences(caseSensitive: false) // ["you": 2, "are": 1, "awesome", 1]
 analysis.frequency(of: "you", caseSensitive: false) // 50.0%
-analysis.averageLength(per: .word) // 5.33
+analysis.averageCharacters(per: .word) // 5.33
 ```
 
 You can also easily sort your occurences via an enhanced sorting method on `Dictionary`.
 
 ```swift
-analysis.wordOccurrences(caseSensitive: false).sorted(by: .key, ascending: false) // [("are", 1), ("awesome", 1), ("you", 2)]
+analysis.wordOccurrences(caseSensitive: false).sorted(by: .key, order: .ascending) // [("are", 1), ("awesome", 1), ("you", 2)]
 ```
 
 ## Contributing
