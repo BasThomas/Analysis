@@ -8,9 +8,40 @@
 
 import UIKit
 
+private let analyseIdentifier = "analyse"
+
 class ViewController: UIViewController {
   
-  override func viewDidLoad() {
-    super.viewDidLoad()
+  @IBOutlet var analyseBarButtonItem: UIBarButtonItem!
+  @IBOutlet var textView: UITextView! {
+    didSet {
+      textView.becomeFirstResponder()
+      analyseBarButtonItem.isEnabled = !textView.text.isEmpty
+    }
+  }
+}
+
+// MARK: - Text view delegate
+extension ViewController: UITextViewDelegate {
+  
+  func textViewDidChange(_ textView: UITextView) {
+    analyseBarButtonItem.isEnabled = !textView.text.isEmpty
+  }
+}
+
+// MARK: - Actions
+extension ViewController {
+  
+  @IBAction func analyse(_ sender: UIBarButtonItem) {
+    performSegue(withIdentifier: analyseIdentifier, sender: self)
+  }
+}
+
+// MARK: - Navigation
+extension ViewController {
+  
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    guard let destinationViewController = segue.destination as? AnalysisTableViewController else { return }
+    destinationViewController.input = textView.text
   }
 }

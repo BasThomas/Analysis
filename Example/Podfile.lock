@@ -6,10 +6,10 @@ DEPENDENCIES:
 
 EXTERNAL SOURCES:
   Analysis:
-    :path: ../
+    :path: "../"
 
 SPEC CHECKSUMS:
-  Analysis: b896e09532a2dc6493bee375a07e064d0ae71ecd
+  Analysis: ab1cbd03a290a79c671425c34e43d94b7a620f24
 
 PODFILE CHECKSUM: 8aa19244f257b8174d0051e41788d104857daad3
 
