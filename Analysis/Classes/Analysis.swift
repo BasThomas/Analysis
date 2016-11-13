@@ -166,7 +166,7 @@ public struct Analysis {
   /// Returns the average characters of the specified `LengthOption`.
   ///
   /// - Parameter option: The option to calculate the average of.
-  /// This is either by `.words` or by `.sentence`.
+  /// This is either by `.word` or by `.sentence`.
   public func averageCharacters(per option: LengthOption) -> Double {
     switch option {
     case .word:
