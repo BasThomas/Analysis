@@ -37,7 +37,7 @@ public struct Analysis {
       .replacingOccurrences(of: "! ", with: "!\n")
       .replacingOccurrences(of: ". ", with: ".\n")
       .replacingOccurrences(of: "? ", with: "?\n").lines
-      .filter { !$0.isEmpty }
+      .filter { !$0.trimmingCharacters(in: .whitespaces).isEmpty }
     words = input.characters
       .split(separator: " ")
       .map(String.init)
