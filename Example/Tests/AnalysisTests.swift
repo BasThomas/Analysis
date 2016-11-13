@@ -19,6 +19,7 @@ class AnalysisTests: XCTestCase {
   let z = "z".analysed()
   let repeating = "repeat, repeat, repeat".analysed()
   let differentSentenceLengths = "Hi. How are you? I am good".analysed()
+  let spaces = "Hi.   How are you doing?   ".analysed()
   
   override func setUp() {
     super.setUp()
@@ -49,6 +50,8 @@ class AnalysisTests: XCTestCase {
   func testSentenceCount() {
     XCTAssertEqual(three.sentenceCount(), 3)
     XCTAssertEqual(three.sentences.count, 3)
+    XCTAssertEqual(spaces.sentenceCount(), 2)
+    XCTAssertEqual(spaces.sentences.count, 2)
   }
   
   func testWordCount() {
