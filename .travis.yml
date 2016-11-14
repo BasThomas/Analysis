@@ -1,3 +1,3 @@
 language: objective-c
 script:
-  - xctool run-tests -workspace Example/Analysis.xcworkspace -scheme Analysis_Tests -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
+  - xcodebuild -scheme Analysis_Tests -workspace Example/Analysis.xcworkspace -configuration Debug build test -destination "platform=iOS Simulator,name=iPhone 7"
