@@ -75,7 +75,6 @@ class AnalysisTests: XCTestCase {
   }
   
   func testWordOccurences() {
-    print(helloWorld1.words)
     XCTAssertEqual(helloWorld1.occurrences(of: "hello"), 1)
     XCTAssertEqual(helloWorld1.occurrences(of: "HELLO"), 1)
     XCTAssertEqual(helloWorld1.occurrences(of: "invalid"), 0)
