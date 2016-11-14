@@ -1,3 +1,4 @@
 language: objective-c
 script:
+  - pod install
   - xcodebuild -scheme Analysis_Tests -workspace Example/Analysis.xcworkspace -configuration Debug build test -destination "platform=iOS Simulator,name=iPhone 6"
