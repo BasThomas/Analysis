@@ -1,4 +1,6 @@
 language: objective-c
+osx_image: xcode8.1
+
 script:
   - cd Example/
   - pod install
