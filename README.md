@@ -1,3 +1,7 @@
+[![Travis status](https://img.shields.io/travis/BasThomas/Analysis.svg)](https://travis-ci.org/BasThomas/Analysis)
+[![CocoaPods downloads](https://img.shields.io/cocoapods/dt/Analysis.svg)](https://cocoapods.org/pods/Analysis)
+[![CocoaPods version](https://img.shields.io/cocoapods/v/Analysis.svg)](https://cocoapods.org/pods/Analysis)
+
 # Analysis
 
 Analysis is a tool that helps you extract useful information from strings. It calculates the amount of sentences, words, characters, occurrence of words and characters, and more.
