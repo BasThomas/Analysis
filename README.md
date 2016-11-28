@@ -1,3 +1,5 @@
+[![Travis status](https://img.shields.io/travis/BasThomas/Analysis.svg)](https://travis-ci.org/BasThomas/Analysis)
+
 # Analysis
 
 Analysis is a tool that helps you extract useful information from strings. It calculates the amount of sentences, words, characters, occurrence of words and characters, and more.
