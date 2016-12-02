@@ -17,6 +17,7 @@ public enum LengthOption {
 /// An analysis of a `String`.
 public struct Analysis {
   public typealias Percentage = Double
+  public typealias Grade = Double
   
   /// The string used to construct the `Analysis`.
   public let input: String
@@ -200,6 +201,28 @@ public struct Analysis {
   /// Returns the average words per sentence.
   public var averageWordsPerSentence: Double {
     return Double(wordCount()) / Double(sentenceCount())
+  }
+  
+  private var _wordsPerSentences: Double {
+    return Double(wordCount()) / Double(sentenceCount())
+  }
+  
+  private var _syllablesPerWords: Double {
+    return Double(syllableCount()) / Double(wordCount())
+  }
+  
+  /// Returns the Flesch reading ease score.
+  ///
+  /// - Note: https://en.wikipedia.org/wiki/Flesch–Kincaid_readability_tests#Flesch_reading_ease
+  public func fleschReadingEase() -> Percentage {
+    return 206.835 - 1.015 * _wordsPerSentences - 84.6 * _syllablesPerWords
+  }
+  
+  /// Returns the Flesch-Kincaid grade level.
+  ///
+  /// - Note: https://en.wikipedia.org/wiki/Flesch–Kincaid_readability_tests#Flesch.E2.80.93Kincaid_grade_level
+  public func fleschKincaidGradeLevel() -> Grade {
+    return 0.39 * _wordsPerSentences + 11.8 * _syllablesPerWords - 15.59
   }
 }
 
