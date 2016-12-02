@@ -9,7 +9,7 @@
 //  https://github.com/m09/syllable-counter
 //
 
-import UIKit
+import Foundation
 
 public class SyllableCounter {
   

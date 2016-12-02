@@ -1,11 +1,3 @@
-//
-//  Character+Casing.swift
-//  Pods
-//
-//  Created by Bas Broek on 02/12/2016.
-//
-//
-
 import Foundation
 
 internal extension Character {

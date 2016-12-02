@@ -1,11 +1,3 @@
-//
-//  Analysis.swift
-//  
-//
-//  Created by Bas Broek on 11/11/2016.
-//
-//
-
 import Foundation
 
 /// The option to use when calculating average length. This is either `.word` or `.sentence`.
