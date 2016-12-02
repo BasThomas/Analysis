@@ -95,7 +95,7 @@ public struct Analysis {
   private func _characterOccurences(caseSensitive: Bool = false) -> [Character: Int] {
     var occurrences: [Character: Int] = [:]
     characters
-      .map { (caseSensitive) ? $0 : Character(String(describing: $0).lowercased()) }
+      .map { (caseSensitive) ? $0 : $0.lowercased() }
       .forEach { occurrences[$0] = (occurrences[$0] ?? 0) + 1 }
     return occurrences
   }
@@ -140,9 +140,9 @@ public struct Analysis {
   /// should be counted regardless of their case sensitivity.
   /// Defaults to `false`.
   public func occurrences(of character: Character, caseSensitive: Bool = false) -> Int {
-    let character = (caseSensitive) ? character : Character(String(describing: character).lowercased())
+    let character = (caseSensitive) ? character : character.lowercased()
     return characters
-      .map { (caseSensitive) ? $0 : Character(String(describing: $0).lowercased()) }
+      .map { (caseSensitive) ? $0 : $0.lowercased() }
       .filter { $0 == character }.count
   }
   
