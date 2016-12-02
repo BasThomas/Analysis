@@ -20,7 +20,7 @@ There's a sample project in the `Example` directory. To use it, run `pod install
 
 ## Usage
 
-Analysing a string is very straightforward. You can use any of the two ways to instantiate an `Analysis`:
+Analysing a string is very straightforward. You can use any of these two ways to instantiate an `Analysis`:
 
 ```swift
 import Analysis
