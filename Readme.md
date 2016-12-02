@@ -67,4 +67,4 @@ Check out the issues for some tasks to get started with. Or, write tests. We can
 
 ## License
 
-Analysis is released under an MIT license. See [LICENSE](LICENSE) for more information.
+Analysis is released under an MIT license. See [License](License) for more information.
