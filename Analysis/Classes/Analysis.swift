@@ -8,7 +8,7 @@
 
 import Foundation
 
-/// The option to when calculating average length. This is either `.word` or `.sentence`.
+/// The option to use when calculating average length. This is either `.word` or `.sentence`.
 public enum LengthOption {
   case word
   case sentence
