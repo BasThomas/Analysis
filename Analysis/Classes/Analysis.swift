@@ -63,6 +63,13 @@ public struct Analysis {
     }
   }
   
+  /// Returns the total amount of syllables of the `input`.
+  public func syllableCount() -> Int {
+    return words
+      .map { $0.syllables }
+      .reduce(0, +)
+  }
+  
   /// Returns the character count of the `input`.
   ///
   /// - Parameter includingSpaces: Indicating if characters
@@ -136,6 +143,16 @@ public struct Analysis {
     return characters
       .map { (caseSensitive) ? $0 : Character(String(describing: $0).lowercased()) }
       .filter { $0 == character }.count
+  }
+  
+  /// Returns the syllables of every unique word.
+  public func wordSyllables() -> [String: Int] {
+    var syllables: [String: Int] = [:]
+    let uniqueWords = Array(_wordOccurrences(caseSensitive: false).keys)
+    
+    uniqueWords.forEach { syllables[$0] = $0.syllables }
+    
+    return syllables
   }
   
   /// Returns the frequency of the specified word.
