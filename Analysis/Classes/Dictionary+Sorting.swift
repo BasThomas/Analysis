@@ -1,11 +1,3 @@
-//
-//  Dictionary+Sorting.swift
-//  
-//
-//  Created by Bas Broek on 11/11/2016.
-//
-//
-
 import Foundation
 
 /// The sort option of the dictionary. This is either `.key` or `.value`.

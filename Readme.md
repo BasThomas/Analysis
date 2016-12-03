@@ -46,6 +46,11 @@ analysis.wordOccurrences(caseSensitive: true) // ["You": 1, "are": 1, "awesome",
 analysis.wordOccurrences(caseSensitive: false) // ["you": 2, "are": 1, "awesome", 1]
 analysis.frequency(of: "you", caseSensitive: false) // 50.0%
 analysis.averageCharacters(per: .word) // 5.33
+
+analysis.syllableCount() // 5
+analysis.wordSyllables() // ["you": 1, "are": 1, "awesome": 2]
+analysis.fleschReadingEase() // 97.025
+analysis.fleschKincaidGradeLevel() // 0.72
 ```
 
 You can also easily sort your occurences via an enhanced sorting method on `Dictionary`.
@@ -62,4 +67,4 @@ Check out the issues for some tasks to get started with. Or, write tests. We can
 
 ## License
 
-Analysis is released under an MIT license. See [LICENSE](LICENSE) for more information.
+Analysis is released under an MIT license. See [License](License) for more information.

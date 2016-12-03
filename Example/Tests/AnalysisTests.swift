@@ -158,4 +158,20 @@ class AnalysisTests: XCTestCase {
     XCTAssertEqual(helloWorld1.averageWordsPerSentence, 2.0)
     XCTAssertEqual(repeating.averageWordsPerSentence, 3.0)
   }
+  
+  func testSyllableCount() {
+    XCTAssertEqual(helloWorld1.syllableCount(), 3)
+    XCTAssertEqual(helloWorld2.syllableCount(), 3)
+    XCTAssertEqual(a.syllableCount(), 1)
+    XCTAssertEqual(z.syllableCount(), 1)
+    XCTAssertEqual(repeating.syllableCount(), 6)
+  }
+  
+  func testWordSyllables() {
+    XCTAssertEqual(helloWorld1.wordSyllables(), ["hello": 2, "world": 1])
+    XCTAssertEqual(helloWorld2.wordSyllables(), ["hello": 2, "world": 1])
+    XCTAssertEqual(a.wordSyllables(), ["a": 1])
+    XCTAssertEqual(z.wordSyllables(), ["z": 1])
+    XCTAssertEqual(repeating.wordSyllables(), ["repeat": 2])
+  }
 }

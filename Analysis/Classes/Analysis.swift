@@ -1,14 +1,6 @@
-//
-//  Analysis.swift
-//  
-//
-//  Created by Bas Broek on 11/11/2016.
-//
-//
-
 import Foundation
 
-/// The option to when calculating average length. This is either `.word` or `.sentence`.
+/// The option to use when calculating average length. This is either `.word` or `.sentence`.
 public enum LengthOption {
   case word
   case sentence
@@ -17,6 +9,7 @@ public enum LengthOption {
 /// An analysis of a `String`.
 public struct Analysis {
   public typealias Percentage = Double
+  public typealias Grade = Double
   
   /// The string used to construct the `Analysis`.
   public let input: String
@@ -63,6 +56,13 @@ public struct Analysis {
     }
   }
   
+  /// Returns the total amount of syllables of the `input`.
+  public func syllableCount() -> Int {
+    return words
+      .map { $0.syllables }
+      .reduce(0, +)
+  }
+  
   /// Returns the character count of the `input`.
   ///
   /// - Parameter includingSpaces: Indicating if characters
@@ -87,7 +87,7 @@ public struct Analysis {
   private func _characterOccurences(caseSensitive: Bool = false) -> [Character: Int] {
     var occurrences: [Character: Int] = [:]
     characters
-      .map { (caseSensitive) ? $0 : Character(String(describing: $0).lowercased()) }
+      .map { (caseSensitive) ? $0 : $0.lowercased() }
       .forEach { occurrences[$0] = (occurrences[$0] ?? 0) + 1 }
     return occurrences
   }
@@ -132,10 +132,20 @@ public struct Analysis {
   /// should be counted regardless of their case sensitivity.
   /// Defaults to `false`.
   public func occurrences(of character: Character, caseSensitive: Bool = false) -> Int {
-    let character = (caseSensitive) ? character : Character(String(describing: character).lowercased())
+    let character = (caseSensitive) ? character : character.lowercased()
     return characters
-      .map { (caseSensitive) ? $0 : Character(String(describing: $0).lowercased()) }
+      .map { (caseSensitive) ? $0 : $0.lowercased() }
       .filter { $0 == character }.count
+  }
+  
+  /// Returns the syllables of every unique word.
+  public func wordSyllables() -> [String: Int] {
+    var syllables: [String: Int] = [:]
+    let uniqueWords = Array(_wordOccurrences(caseSensitive: false).keys)
+    
+    uniqueWords.forEach { syllables[$0] = $0.syllables }
+    
+    return syllables
   }
   
   /// Returns the frequency of the specified word.
@@ -183,6 +193,28 @@ public struct Analysis {
   /// Returns the average words per sentence.
   public var averageWordsPerSentence: Double {
     return Double(wordCount()) / Double(sentenceCount())
+  }
+  
+  private var _wordsPerSentences: Double {
+    return Double(wordCount()) / Double(sentenceCount())
+  }
+  
+  private var _syllablesPerWords: Double {
+    return Double(syllableCount()) / Double(wordCount())
+  }
+  
+  /// Returns the Flesch reading ease score.
+  ///
+  /// - Note: https://en.wikipedia.org/wiki/Flesch–Kincaid_readability_tests#Flesch_reading_ease
+  public func fleschReadingEase() -> Percentage {
+    return 206.835 - 1.015 * _wordsPerSentences - 84.6 * _syllablesPerWords
+  }
+  
+  /// Returns the Flesch-Kincaid grade level.
+  ///
+  /// - Note: https://en.wikipedia.org/wiki/Flesch–Kincaid_readability_tests#Flesch.E2.80.93Kincaid_grade_level
+  public func fleschKincaidGradeLevel() -> Grade {
+    return 0.39 * _wordsPerSentences + 11.8 * _syllablesPerWords - 15.59
   }
 }
 
