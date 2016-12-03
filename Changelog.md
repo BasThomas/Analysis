@@ -1,5 +1,7 @@
 # next
 
+# [0.2.0](https://github.com/BasThomas/Analysis/releases/tag/0.2.0)
+
 - Added `syllableCount()`, which counts the total amount of syllables of the `input`.
 - Added `wordSyllables()`, which returns the syllables of every unique word.
 - Added `fleschReadingEase()`, which calculates the [Flesch reading ease score](https://en.wikipedia.org/wiki/Flesch–Kincaid_readability_tests#Flesch_reading_ease).

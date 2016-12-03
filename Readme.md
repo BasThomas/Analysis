@@ -9,7 +9,7 @@ Analysis is a tool that helps you extract useful information from strings. It ca
 Analysis is available via CocoaPods.
 
 ```ruby
-pod 'Analysis', '~> 0.1.0'
+pod 'Analysis', '~> 0.2.0'
 ```
 
 Then run `pod install`.
