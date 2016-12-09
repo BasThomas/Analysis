@@ -75,6 +75,12 @@ class AnalysisTests: XCTestCase {
   }
   
   func testWordOccurences() {
+    XCTAssertEqual(helloWorld1.wordOccurrences(), ["hello": 1, "world": 1])
+    XCTAssertEqual(repeating.wordOccurrences(), ["repeat": 3])
+    
+    XCTAssertEqual(helloWorld1.wordOccurrences(caseSensitive: true), ["Hello": 1, "world": 1])
+    XCTAssertEqual(repeating.wordOccurrences(caseSensitive: true), ["repeat": 3])
+    
     XCTAssertEqual(helloWorld1.occurrences(of: "hello"), 1)
     XCTAssertEqual(helloWorld1.occurrences(of: "HELLO"), 1)
     XCTAssertEqual(helloWorld1.occurrences(of: "invalid"), 0)
@@ -89,6 +95,17 @@ class AnalysisTests: XCTestCase {
   }
   
   func testCharacterOccurrences() {
+    let helloWorldCharacterOccurences: [Character: Int] = ["h": 1, "e": 1, "l": 3, "o": 2, ",": 1, " ": 1, "w": 1, "r": 1, "d": 1, "!": 1]
+    let repeatingCharacterOccurences: [Character: Int] = ["r": 3, "e": 6, "p": 3, "a": 3, "t": 3, ",": 2, " ": 2]
+    XCTAssertEqual(helloWorld1.characterOccurences(), helloWorldCharacterOccurences)
+    XCTAssertEqual(repeating.characterOccurences(), repeatingCharacterOccurences)
+    
+    let helloWorldCaseSensitiveCharacterOccurences: [Character: Int] = ["H": 1, "e": 1, "l": 3, "o": 2, ",": 1, " ": 1, "w": 1, "r": 1, "d": 1, "!": 1]
+    let repeatingCaseSensitiveCharacterOccurences = repeatingCharacterOccurences
+
+    XCTAssertEqual(helloWorld1.characterOccurences(caseSensitive: true), helloWorldCaseSensitiveCharacterOccurences)
+    XCTAssertEqual(repeating.characterOccurences(caseSensitive: true), repeatingCaseSensitiveCharacterOccurences)
+    
     XCTAssertEqual(helloWorld1.occurrences(of: Character("h")), 1)
     XCTAssertEqual(helloWorld1.occurrences(of: Character("H")), 1)
     XCTAssertEqual(repeating.occurrences(of: Character("a")), 3)
