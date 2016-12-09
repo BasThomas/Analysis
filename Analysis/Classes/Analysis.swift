@@ -243,12 +243,13 @@ extension Analysis: Comparable {
 
 extension Analysis: CustomStringConvertible, CustomDebugStringConvertible {
   
+  /// A textual representation of this instance.
   public var description: String {
     return "Analysis(\"\(input)\")"
   }
   
   /// A representation of the string that is suitable for debugging.
   public var debugDescription: String {
-    return description
+    return dump(description)
   }
 }
