@@ -191,4 +191,18 @@ class AnalysisTests: XCTestCase {
     XCTAssertEqual(z.wordSyllables(), ["z": 1])
     XCTAssertEqual(repeating.wordSyllables(), ["repeat": 2])
   }
+  
+  func testDescription() {
+    XCTAssertEqual(helloWorld1.description, "Analysis(\"\(helloWorld1.input)\")")
+    XCTAssertEqual(helloWorld2.description, "Analysis(\"\(helloWorld2.input)\")")
+    XCTAssertEqual(a.description, "Analysis(\"\(a.input)\")")
+    XCTAssertEqual(z.description, "Analysis(\"\(z.input)\")")
+  }
+  
+  func testDebugDescription() {
+    XCTAssertEqual(helloWorld1.debugDescription, dump(helloWorld1.description))
+    XCTAssertEqual(helloWorld2.debugDescription, dump(helloWorld2.description))
+    XCTAssertEqual(a.debugDescription, dump(a.description))
+    XCTAssertEqual(z.debugDescription, dump(z.description))
+  }
 }
