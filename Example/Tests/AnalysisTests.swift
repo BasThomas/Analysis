@@ -20,6 +20,7 @@ class AnalysisTests: XCTestCase {
   let repeating = "repeat, repeat, repeat".analysed()
   let differentSentenceLengths = "Hi. How are you? I am good".analysed()
   let spaces = "Hi.   How are you doing?   ".analysed()
+  let face = "Can't feel my face".analysed()
   
   override func setUp() {
     super.setUp()
@@ -52,34 +53,42 @@ class AnalysisTests: XCTestCase {
     XCTAssertEqual(three.sentences.count, 3)
     XCTAssertEqual(spaces.sentenceCount(), 2)
     XCTAssertEqual(spaces.sentences.count, 2)
+    XCTAssertEqual(face.sentenceCount(), 1)
+    XCTAssertEqual(face.sentences.count, 1)
   }
   
   func testWordCount() {
     XCTAssertEqual(helloWorld1.wordCount(), 2)
     XCTAssertEqual(three.wordCount(), 3)
     XCTAssertEqual(repeating.wordCount(), 3)
+    XCTAssertEqual(face.wordCount(), 4)
     
     XCTAssertEqual(helloWorld1.wordCount(unique: true), 2)
     XCTAssertEqual(three.wordCount(unique: true), 3)
     XCTAssertEqual(repeating.wordCount(unique: true), 1)
+    XCTAssertEqual(face.wordCount(unique: true), 4)
   }
   
   func testCharacterCount() {
     XCTAssertEqual(helloWorld1.characterCount(), helloWorld1.characters.count)
     XCTAssertEqual(three.characterCount(), three.characters.count)
     XCTAssertEqual(repeating.characterCount(), repeating.characters.count)
+    XCTAssertEqual(face.characterCount(), face.characters.count)
     
     XCTAssertEqual(helloWorld1.characterCount(includingSpaces: false), helloWorld1.characters.count - 1)
     XCTAssertEqual(three.characterCount(includingSpaces: false), three.characters.count - 2)
     XCTAssertEqual(repeating.characterCount(includingSpaces: false), repeating.characters.count - 2)
+    XCTAssertEqual(face.characterCount(includingSpaces: false), face.characters.count - 3)
   }
   
   func testWordOccurences() {
     XCTAssertEqual(helloWorld1.wordOccurrences(), ["hello": 1, "world": 1])
     XCTAssertEqual(repeating.wordOccurrences(), ["repeat": 3])
+    XCTAssertEqual(face.wordOccurrences(), ["can't": 1, "feel": 1, "my": 1, "face": 1])
     
     XCTAssertEqual(helloWorld1.wordOccurrences(caseSensitive: true), ["Hello": 1, "world": 1])
     XCTAssertEqual(repeating.wordOccurrences(caseSensitive: true), ["repeat": 3])
+    XCTAssertEqual(face.wordOccurrences(caseSensitive: true), ["Can't": 1, "feel": 1, "my": 1, "face": 1])
     
     XCTAssertEqual(helloWorld1.occurrences(of: "hello"), 1)
     XCTAssertEqual(helloWorld1.occurrences(of: "HELLO"), 1)
