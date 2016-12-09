@@ -3,7 +3,7 @@
 //  Analysis
 //
 //  Created by Bas Broek on 02/12/2016.
-//  Copyright © 2016 CocoaPods. All rights reserved.
+//  Copyright (c) 2016 Bas Broek. All rights reserved.
 //
 
 import UIKit
