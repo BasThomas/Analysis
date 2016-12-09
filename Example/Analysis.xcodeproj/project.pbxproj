@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4926B8801DFAB4E30021C0B1 /* CharacterCasingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4926B87F1DFAB4E30021C0B1 /* CharacterCasingTests.swift */; };
 		4978479C1DD87E4A003CFFBB /* Analysis.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4978479B1DD87E4A003CFFBB /* Analysis.storyboard */; };
 		4978479E1DD88148003CFFBB /* AnalysisTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4978479D1DD88148003CFFBB /* AnalysisTableViewController.swift */; };
 		4985BEC11DF1959500B36F51 /* UIViewController+Safari.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4985BEC01DF1959500B36F51 /* UIViewController+Safari.swift */; };
@@ -35,6 +36,7 @@
 		079C311AB87F9BCEED7E8427 /* Pods_Analysis_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Analysis_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E00E999478F1BFC6D31CAD6 /* Pods_Analysis_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Analysis_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		45E49C4F9720F93380BF3A10 /* Pods-Analysis_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Analysis_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Analysis_Tests/Pods-Analysis_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		4926B87F1DFAB4E30021C0B1 /* CharacterCasingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterCasingTests.swift; sourceTree = "<group>"; };
 		4978479B1DD87E4A003CFFBB /* Analysis.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Analysis.storyboard; sourceTree = "<group>"; };
 		4978479D1DD88148003CFFBB /* AnalysisTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalysisTableViewController.swift; sourceTree = "<group>"; };
 		4985BEC01DF1959500B36F51 /* UIViewController+Safari.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Safari.swift"; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 			isa = PBXGroup;
 			children = (
 				607FACEB1AFB9204008FA782 /* AnalysisTests.swift */,
+				4926B87F1DFAB4E30021C0B1 /* CharacterCasingTests.swift */,
 				607FACE91AFB9204008FA782 /* Supporting Files */,
 			);
 			path = Tests;
@@ -382,6 +385,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4926B8801DFAB4E30021C0B1 /* CharacterCasingTests.swift in Sources */,
 				607FACEC1AFB9204008FA782 /* AnalysisTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
