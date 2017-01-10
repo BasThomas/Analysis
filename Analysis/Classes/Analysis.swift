@@ -253,3 +253,20 @@ extension Analysis: CustomStringConvertible, CustomDebugStringConvertible {
     return dump(description)
   }
 }
+
+extension Analysis: ExpressibleByStringLiteral {
+  public typealias UnicodeScalarLiteralType = StringLiteralType
+  public typealias ExtendedGraphemeClusterLiteralType = StringLiteralType
+  
+  public init(stringLiteral value: StringLiteralType) {
+    self.init(of: value)
+  }
+  
+  public init(extendedGraphemeClusterLiteral value: ExtendedGraphemeClusterLiteralType) {
+    self.init(of: value)
+  }
+  
+  public init(unicodeScalarLiteral value: UnicodeScalarLiteralType) {
+    self.init(of: value)
+  }
+}

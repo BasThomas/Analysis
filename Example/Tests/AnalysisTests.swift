@@ -22,6 +22,9 @@ class AnalysisTests: XCTestCase {
   let spaces = "Hi.   How are you doing?   ".analysed()
   let face = "Can't feel my face".analysed()
   
+  let literal: Analysis = "How are you doing?"
+  let nonLiteral = Analysis(of: "How are you doing?")
+  
   override func setUp() {
     super.setUp()
   }
@@ -220,5 +223,9 @@ class AnalysisTests: XCTestCase {
     XCTAssertEqual(helloWorld2.hashValue, helloWorld2.input.hashValue)
     XCTAssertEqual(a.hashValue, a.input.hashValue)
     XCTAssertEqual(z.hashValue, z.input.hashValue)
+  }
+  
+  func testExpressibleByStringLiteral() {
+    XCTAssertEqual(literal, nonLiteral)
   }
 }
