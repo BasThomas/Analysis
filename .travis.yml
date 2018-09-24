@@ -1,8 +1,8 @@
-language: objective-c
-osx_image: xcode8.1
+language: swift
+osx_image: xcode10
 
 script:
   - cd Example/
   - pod install
   - cd ..
-  - xcodebuild -scheme Analysis_Tests -workspace Example/Analysis.xcworkspace -configuration Debug build test -destination "platform=iOS Simulator,name=iPhone 6"
+  - xcodebuild clean test -scheme Analysis_Tests -workspace Example/Analysis.xcworkspace -destination "platform=iOS Simulator,name=iPhone X,OS=12.0"

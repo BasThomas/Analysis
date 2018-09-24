@@ -1,5 +1,9 @@
 # next
 
+# [0.3.0](https://github.com/BasThomas/Analysis/releases/tag/0.3.0)
+
+- Updated to Swift 4.2.
+
 # [0.2.0](https://github.com/BasThomas/Analysis/releases/tag/0.2.0)
 
 - Added `syllableCount()`, which counts the total amount of syllables of the `input`.
