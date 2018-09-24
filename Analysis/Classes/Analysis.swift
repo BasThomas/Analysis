@@ -31,11 +31,10 @@ public struct Analysis {
       .replacingOccurrences(of: ". ", with: ".\n")
       .replacingOccurrences(of: "? ", with: "?\n").lines
       .filter { !$0.trimmingCharacters(in: .whitespaces).isEmpty }
-    words = input.characters
+    words = input
       .split(separator: " ")
-      .map(String.init)
       .map { $0.trimmingCharacters(in: CharacterSet.letters.inverted) }
-    characters = Array(input.characters)
+    characters = Array(input)
   }
   
   /// Returns the sentence count of the `input`.
@@ -180,10 +179,10 @@ public struct Analysis {
   public func averageCharacters(per option: LengthOption) -> Double {
     switch option {
     case .word:
-      return Double(words.reduce("", +).characters.count) / Double(wordCount())
+      return Double(words.reduce("", +).count) / Double(wordCount())
     case .sentence:
       if sentences.count > 1 {
-        return Double(sentences.reduce("", +).characters.count) / Double(sentenceCount())
+        return Double(sentences.reduce("", +).count) / Double(sentenceCount())
       } else {
         return Double(characterCount(includingSpaces: true)) / Double(sentenceCount())
       }

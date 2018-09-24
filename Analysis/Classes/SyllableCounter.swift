@@ -152,8 +152,8 @@ public class SyllableCounter {
   // MARK: - Public methods
   
   internal func count(word: String) -> Int {
-    if word.characters.count <= 1 {
-      return word.characters.count
+    if word.count <= 1 {
+      return word.count
     }
     
     var mutatedWord = word.lowercased(with: Locale(identifier: "en_US")).trimmingCharacters(in: .punctuationCharacters)
@@ -162,14 +162,14 @@ public class SyllableCounter {
       return exceptionValue
     }
     
-    if mutatedWord.characters.last == "e" {
-      mutatedWord = String(mutatedWord.characters.dropLast())
+    if mutatedWord.last == "e" {
+      mutatedWord = String(mutatedWord.dropLast())
     }
     
     var count = 0
     var previousIsVowel = false
     
-    for character in mutatedWord.characters {
+    for character in mutatedWord {
       let isVowel = vowels.contains(character)
       if isVowel && !previousIsVowel {
         count += 1
@@ -178,14 +178,14 @@ public class SyllableCounter {
     }
     
     for pattern in addSyllables {
-      let matches = pattern.matches(in: mutatedWord, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSRange(location: 0, length: mutatedWord.characters.count))
+      let matches = pattern.matches(in: mutatedWord, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSRange(location: 0, length: mutatedWord.count))
       if !matches.isEmpty {
         count += 1
       }
     }
     
     for pattern in subSyllables {
-      let matches = pattern.matches(in: mutatedWord, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSRange(location: 0, length: mutatedWord.characters.count))
+      let matches = pattern.matches(in: mutatedWord, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSRange(location: 0, length: mutatedWord.count))
       if !matches.isEmpty {
         count -= 1
       }
