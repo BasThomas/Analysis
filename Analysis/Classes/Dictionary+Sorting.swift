@@ -25,16 +25,16 @@ extension Dictionary where Key: Comparable, Value: Comparable {
     case .key:
       switch direction {
       case .ascending:
-        return sorted { $0.0.key < $0.1.key }
+        return sorted { $0.key < $1.key }
       case .descending:
-        return sorted { $0.0.key > $0.1.key }
+        return sorted { $0.key > $1.key }
       }
     case .value:
       switch direction {
       case .ascending:
-        return sorted { $0.0.value < $0.1.value }
+        return sorted { $0.value < $1.value }
       case .descending:
-        return sorted { $0.0.value > $0.1.value }
+        return sorted { $0.value > $1.value }
       }
     }
   }
