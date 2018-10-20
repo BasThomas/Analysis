@@ -56,7 +56,9 @@ analysis.fleschKincaidGradeLevel() // 0.72
 You can also easily sort your occurences via an enhanced sorting method on `Dictionary`.
 
 ```swift
-analysis.wordOccurrences(caseSensitive: false).sorted(by: .key, order: .ascending) // [("are", 1), ("awesome", 1), ("you", 2)]
+analysis
+  .wordOccurrences(caseSensitive: false)
+  .sorted(by: .key, order: .ascending) // [("are", 1), ("awesome", 1), ("you", 2)]
 ```
 
 ## Contributing
