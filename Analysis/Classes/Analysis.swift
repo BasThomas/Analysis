@@ -1,14 +1,19 @@
 import Foundation
 
-/// The option to use when calculating average length. This is either `.word` or `.sentence`.
-public enum LengthOption {
-  case word
-  case sentence
-}
-
 /// An analysis of a `String`.
 public struct Analysis {
+
+  /// The option to use when calculating average length.
+  /// This is either `.word` or `.sentence`.
+  public enum LengthOption {
+    case word
+    case sentence
+  }
+
+  /// A typealias of `Double`.
   public typealias Percentage = Double
+
+  /// A typealias of `Double`.
   public typealias Grade = Double
   
   /// The string used to construct the `Analysis`.
@@ -120,7 +125,10 @@ public struct Analysis {
   /// - Parameter caseSensitive: Indicating if words
   /// should be counted regardless of their case sensitivity.
   /// Defaults to `false`.
-  public func occurrences(of word: String, caseSensitive: Bool = false) -> Int {
+  public func occurrences(
+    of word: String,
+    caseSensitive: Bool = false
+  ) -> Int {
     let word = (caseSensitive) ? word : word.lowercased()
     return _wordOccurrences(caseSensitive: caseSensitive)[word] ?? 0
   }
@@ -130,7 +138,10 @@ public struct Analysis {
   /// - Parameter caseSensitive: Indicating if words
   /// should be counted regardless of their case sensitivity.
   /// Defaults to `false`.
-  public func occurrences(of character: Character, caseSensitive: Bool = false) -> Int {
+  public func occurrences(
+    of character: Character,
+    caseSensitive: Bool = false
+  ) -> Int {
     let character = (caseSensitive) ? character : character.lowercased()
     return characters
       .map { (caseSensitive) ? $0 : $0.lowercased() }
@@ -154,7 +165,10 @@ public struct Analysis {
   /// Defaults to `false`.
   ///
   /// - Returns: A percentage based on the `wordCount()`.
-  public func frequency(of word: String, caseSensitive: Bool = false) -> Percentage {
+  public func frequency(
+    of word: String,
+    caseSensitive: Bool = false
+  ) -> Percentage {
     return Double(occurrences(of: word, caseSensitive: caseSensitive)) / Double(wordCount()) * 100.0
   }
   
@@ -168,7 +182,11 @@ public struct Analysis {
   /// Defaults to `true`.
   ///
   /// - Returns: A percentage based on the `characterCount()`.
-  public func frequency(of character: Character, caseSensitive: Bool = false, includingSpaces: Bool = true) -> Percentage {
+  public func frequency(
+    of character: Character,
+    caseSensitive: Bool = false,
+    includingSpaces: Bool = true
+  ) -> Percentage {
     return Double(occurrences(of: character, caseSensitive: caseSensitive)) / Double(characterCount(includingSpaces: includingSpaces)) * 100.0
   }
   
