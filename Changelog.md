@@ -1,8 +1,11 @@
 # next
 
+# [0.4.0](https://github.com/BasThomas/Analysis/releases/tag/0.4.0)
+
 - **Breaking**: Nested `LengthOption` under the `Analysis` namespace. If it is accessed without type inference,
 such as like `LengthOption.word`, you'll need to use `Analysis.LengthOption.word` going forward. Type inference will continue
 to work as expected, allowing you to use `.word` or `.sentence`.
+- **Breaking**: Updated to Swift 5.
 
 # [0.3.0](https://github.com/BasThomas/Analysis/releases/tag/0.3.0)
 

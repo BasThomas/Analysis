@@ -1,6 +1,6 @@
 import Foundation
 
-public extension String {
+extension String {
   
   /// Returns an analysis of `self`.
   public func analysed() -> Analysis {

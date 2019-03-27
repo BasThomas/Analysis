@@ -1,7 +1,7 @@
 import Foundation
 
 /// An analysis of a `String`.
-public struct Analysis {
+public struct Analysis: Hashable {
 
   /// The option to use when calculating average length.
   /// This is either `.word` or `.sentence`.
@@ -232,22 +232,6 @@ public struct Analysis {
   /// - Note: https://en.wikipedia.org/wiki/Flesch–Kincaid_readability_tests#Flesch.E2.80.93Kincaid_grade_level
   public func fleschKincaidGradeLevel() -> Grade {
     return 0.39 * _wordsPerSentences + 11.8 * _syllablesPerWords - 15.59
-  }
-}
-
-extension Analysis: Hashable {
-  
-  /// The `Analysis`’s hash value.
-  ///
-  /// Hash values are not guaranteed to be equal across
-  /// different executions of your program.
-  /// Do not save hash values to use during a future execution.
-  public var hashValue: Int {
-    return input.hashValue
-  }
-  
-  public static func ==(lhs: Analysis, rhs: Analysis) -> Bool {
-    return lhs.input == rhs.input
   }
 }
 

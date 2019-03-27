@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "Analysis"
-  s.version          = "0.3.0"
+  s.version          = "0.4.0"
   s.summary          = "Analyse your strings."
 
   s.description      = <<-DESC
@@ -14,7 +14,7 @@ Analysis analyses strings, checking word count, sentence count, frequency of wor
   s.social_media_url = "https://twitter.com/basthomas"
 
   s.ios.deployment_target = "8.0"
-  s.swift_version         = "4.2"
+  s.swift_version         = "5.0"
 
   s.source_files = "Analysis/Classes/**/*"
 
