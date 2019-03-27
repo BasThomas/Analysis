@@ -183,7 +183,6 @@
 				607FACCD1AFB9204008FA782 /* Frameworks */,
 				607FACCE1AFB9204008FA782 /* Resources */,
 				B726F347928269BC02F4A2CC /* [CP] Embed Pods Frameworks */,
-				71C6F005735D46D3A55E6B0F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -202,8 +201,6 @@
 				607FACE11AFB9204008FA782 /* Sources */,
 				607FACE21AFB9204008FA782 /* Frameworks */,
 				607FACE31AFB9204008FA782 /* Resources */,
-				E847351D50B07BDA4BD2D5C9 /* [CP] Embed Pods Frameworks */,
-				B916C3D6C7965EA0E63FF363 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -277,21 +274,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		71C6F005735D46D3A55E6B0F /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Analysis_Example/Pods-Analysis_Example-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		8E99E9A2B4D2FE8196C886FC /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -334,7 +316,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Analysis_Example/Pods-Analysis_Example-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-Analysis_Example/Pods-Analysis_Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Analysis/Analysis.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -343,37 +325,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Analysis_Example/Pods-Analysis_Example-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B916C3D6C7965EA0E63FF363 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Analysis_Tests/Pods-Analysis_Tests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E847351D50B07BDA4BD2D5C9 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Analysis_Tests/Pods-Analysis_Tests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Analysis_Example/Pods-Analysis_Example-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -536,7 +488,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E2191E54DA43E7984AA43E68 /* Pods-Analysis_Example.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Analysis/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -551,7 +502,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = DE84EF1912913AEE64540651 /* Pods-Analysis_Example.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Analysis/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
