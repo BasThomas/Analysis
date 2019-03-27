@@ -218,13 +218,6 @@ class AnalysisTests: XCTestCase {
     XCTAssertEqual(z.debugDescription, dump(z.description))
   }
   
-  func testHashValue() {
-    XCTAssertEqual(helloWorld1.hashValue, helloWorld1.input.hashValue)
-    XCTAssertEqual(helloWorld2.hashValue, helloWorld2.input.hashValue)
-    XCTAssertEqual(a.hashValue, a.input.hashValue)
-    XCTAssertEqual(z.hashValue, z.input.hashValue)
-  }
-  
   func testExpressibleByStringLiteral() {
     XCTAssertEqual(literal, nonLiteral)
   }
