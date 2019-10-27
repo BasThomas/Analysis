@@ -34,7 +34,8 @@ public struct Analysis: Hashable {
     sentences = input
       .replacingOccurrences(of: "! ", with: "!\n")
       .replacingOccurrences(of: ". ", with: ".\n")
-      .replacingOccurrences(of: "? ", with: "?\n").lines
+      .replacingOccurrences(of: "? ", with: "?\n")
+      .lines
       .filter { !$0.trimmingCharacters(in: .whitespaces).isEmpty }
     words = input
       .split(separator: " ")
@@ -44,7 +45,7 @@ public struct Analysis: Hashable {
   
   /// Returns the sentence count of the `input`.
   public func sentenceCount() -> Int {
-    return sentences.count
+    sentences.count
   }
   
   /// Returns the word count of the `input`.
@@ -62,7 +63,7 @@ public struct Analysis: Hashable {
   
   /// Returns the total amount of syllables of the `input`.
   public func syllableCount() -> Int {
-    return words
+    words
       .map { $0.syllables }
       .reduce(0, +)
   }
@@ -105,7 +106,7 @@ public struct Analysis: Hashable {
   /// - Returns: A `Dictionary` containing the words and their
   /// occurence.
   public func wordOccurrences(caseSensitive: Bool = false) -> [String: Int] {
-    return _wordOccurrences(caseSensitive: caseSensitive)
+    _wordOccurrences(caseSensitive: caseSensitive)
   }
   
   /// Returns the character occurrences of the `input`.
@@ -117,7 +118,7 @@ public struct Analysis: Hashable {
   /// - Returns: A `Dictionary` containing the characters and their
   /// occurence.
   public func characterOccurences(caseSensitive: Bool = false) -> [Character: Int] {
-    return _characterOccurences(caseSensitive: caseSensitive)
+    _characterOccurences(caseSensitive: caseSensitive)
   }
   
   /// Returns the amount of occurrences of the specified word.
@@ -169,7 +170,10 @@ public struct Analysis: Hashable {
     of word: String,
     caseSensitive: Bool = false
   ) -> Percentage {
-    return Double(occurrences(of: word, caseSensitive: caseSensitive)) / Double(wordCount()) * 100.0
+    Double(occurrences(
+      of: word,
+      caseSensitive: caseSensitive
+    )) / Double(wordCount()) * 100.0
   }
   
   /// Returns the frequency of the specified `Character`.
@@ -187,7 +191,12 @@ public struct Analysis: Hashable {
     caseSensitive: Bool = false,
     includingSpaces: Bool = true
   ) -> Percentage {
-    return Double(occurrences(of: character, caseSensitive: caseSensitive)) / Double(characterCount(includingSpaces: includingSpaces)) * 100.0
+    Double(occurrences(
+      of: character,
+      caseSensitive: caseSensitive
+    )) / Double(characterCount(
+      includingSpaces: includingSpaces
+    )) * 100.0
   }
   
   /// Returns the average characters of the specified `LengthOption`.
@@ -209,36 +218,36 @@ public struct Analysis: Hashable {
   
   /// Returns the average words per sentence.
   public var averageWordsPerSentence: Double {
-    return Double(wordCount()) / Double(sentenceCount())
+    Double(wordCount()) / Double(sentenceCount())
   }
   
   private var _wordsPerSentences: Double {
-    return Double(wordCount()) / Double(sentenceCount())
+    Double(wordCount()) / Double(sentenceCount())
   }
   
   private var _syllablesPerWords: Double {
-    return Double(syllableCount()) / Double(wordCount())
+    Double(syllableCount()) / Double(wordCount())
   }
   
   /// Returns the Flesch reading ease score.
   ///
   /// - Note: https://en.wikipedia.org/wiki/Flesch–Kincaid_readability_tests#Flesch_reading_ease
   public func fleschReadingEase() -> Percentage {
-    return 206.835 - 1.015 * _wordsPerSentences - 84.6 * _syllablesPerWords
+    206.835 - 1.015 * _wordsPerSentences - 84.6 * _syllablesPerWords
   }
   
   /// Returns the Flesch-Kincaid grade level.
   ///
   /// - Note: https://en.wikipedia.org/wiki/Flesch–Kincaid_readability_tests#Flesch.E2.80.93Kincaid_grade_level
   public func fleschKincaidGradeLevel() -> Grade {
-    return 0.39 * _wordsPerSentences + 11.8 * _syllablesPerWords - 15.59
+    0.39 * _wordsPerSentences + 11.8 * _syllablesPerWords - 15.59
   }
 }
 
 extension Analysis: Comparable {
   
   public static func <(lhs: Analysis, rhs: Analysis) -> Bool {
-    return lhs.input < rhs.input
+    lhs.input < rhs.input
   }
 }
 
@@ -246,12 +255,12 @@ extension Analysis: CustomStringConvertible, CustomDebugStringConvertible {
   
   /// A textual representation of this instance.
   public var description: String {
-    return "Analysis(\"\(input)\")"
+    "Analysis(\"\(input)\")"
   }
   
   /// A representation of the string that is suitable for debugging.
   public var debugDescription: String {
-    return dump(description)
+    dump(description)
   }
 }
 
