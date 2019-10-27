@@ -5,4 +5,4 @@ script:
   - cd Example/
   - pod install
   - cd ..
-  - xcodebuild clean test -scheme Analysis_Tests -workspace Example/Analysis.xcworkspace -destination "platform=iOS Simulator,name=iPhone X,OS=13.1"
+  - xcodebuild clean test -scheme Analysis_Tests -workspace Example/Analysis.xcworkspace -destination "platform=iOS Simulator,name=iPhone 11 Pro Max,OS=13.1"
