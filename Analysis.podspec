@@ -14,7 +14,7 @@ Analysis analyses strings, checking word count, sentence count, frequency of wor
   s.social_media_url = 'https://twitter.com/basthomas'
 
   s.ios.deployment_target = '8.0'
-  s.swift_version         = '5.0'
+  s.swift_version         = '5.1'
 
   s.source_files = 'Analysis/Classes/**/*'
 
