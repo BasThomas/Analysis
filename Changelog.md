@@ -1,5 +1,9 @@
 # next
 
+# [0.5.0](https://github.com/BasThomas/Analysis/releases/tag/0.4.0)
+
+- Updated to Swift 5.1.
+
 # [0.4.0](https://github.com/BasThomas/Analysis/releases/tag/0.4.0)
 
 - **Breaking**: Nested `LengthOption` under the `Analysis` namespace. If it is accessed without type inference,

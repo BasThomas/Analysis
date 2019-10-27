@@ -1,5 +1,5 @@
 PODS:
-  - Analysis (0.4.0)
+  - Analysis (0.5.0)
 
 DEPENDENCIES:
   - Analysis (from `../`)
@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  Analysis: faa09d680f722f4111f2f4dc69492cfc228f0ee4
+  Analysis: 7198ca0acc133fe99510f82fe241e65b77de2fbb
 
 PODFILE CHECKSUM: d91e06da3cd073207837737c6c65ef37d1dfd49f
 
